@@ -3,8 +3,15 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
       title: 'Contador de Pessoas',
-      //home: Container(color: Colors.amberAccent,),
-      home: Home()));
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Contador de Pessoas'),
+          backgroundColor: Colors.black87,
+        ),
+        body: Home(),
+      ),
+    )
+  );
 }
 
 class Home extends StatefulWidget {
@@ -20,13 +27,17 @@ class _HomeState extends State<Home> {
     setState(() {
       _people += delta;
 
-      _infoText = _people <= 0 ? 'Mundo Invertido!' : (_people <= 10 ? 'Pode Entrar!' : 'Lotado!');
+      _infoText = _people <= 0
+          ? 'Mundo Invertido!'
+          : (_people <= 10 ? 'Pode Entrar!' : 'Lotado!');
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: <Widget>[
+    return
+    
+      Stack(children: <Widget>[
       Image.asset(
         'images/restaurant.jpg',
         fit: BoxFit.cover,
@@ -37,8 +48,11 @@ class _HomeState extends State<Home> {
         children: <Widget>[
           Text(
             'Pessoas: $_people',
-            style:
-            TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            style: TextStyle(
+                fontSize: 40.0,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                decoration: TextDecoration.none),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -49,7 +63,7 @@ class _HomeState extends State<Home> {
                   },
                   child: Text(
                     '+1',
-                    style: TextStyle(fontSize: 40.0, color: Colors.white),
+                    style: TextStyle(fontSize: 30.0, color: Colors.white),
                   )),
               FlatButton(
                   onPressed: () {
@@ -66,7 +80,8 @@ class _HomeState extends State<Home> {
             style: TextStyle(
                 color: Colors.white,
                 fontStyle: FontStyle.italic,
-                fontSize: 30.0),
+                fontSize: 30.0,
+                decoration: TextDecoration.none),
           )
         ],
       )
